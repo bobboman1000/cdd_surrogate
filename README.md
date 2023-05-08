@@ -17,7 +17,7 @@ The two major parts of this work were
 (2) I've built different time-series models aiming to generate a complete stress-strain time series based on a set of static input parameters. 
 
 ## TL;DR
-The CDD simulation is a physical simulation that, among other things, predicts a time-series of deformation of materials like metals. I've built a surrogate model that predicts this time series, based on physical parameters of the material.
+The CDD simulation is a physical simulation that, among other things, predicts a time-series of deformation of materials like metal. I've built a surrogate model that predicts this time series, based on physical parameters of the material.
 We achieve the time-series predictions by using models like LightGBM and LSTMs.
 
 ## Structure
