@@ -12,10 +12,13 @@ The work evaluates different approaches: it compares common surrogate models lik
 
 The two major parts of this work were 
 
-(1) Building a dataset. As mentioned, simulations are computationally very costly, hence building a dataset is a huge task on its own. I've structurally generated a dataset using multiple large machines running over months. This alone has the potential to save hours of future work, hence this may become part of a future publication and will not be published at this point.
+(1) Building a dataset. As mentioned, simulations are computationally very costly, hence building a dataset is a huge task on its own. I've structurally generated a dataset using multiple large machines running over months. This has the potential of saving hours of future work, hence this may become part of a future publication and will not be published at this point.
 
 (2) I've built different time-series models aiming to generate a complete stress-strain time series based on a set of static input parameters. 
 
+## TL;DR
+The CDD simulation is a physical simulation that, among other things, predicts a time-series of deformation of materials like metals. I've built a surrogate model that predicts this time series, based on physical parameters of the material.
+We achieve the time-series predictions by using models like LightGBM and LSTMs.
 
 ## Structure
 
