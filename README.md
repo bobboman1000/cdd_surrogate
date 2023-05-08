@@ -11,7 +11,6 @@ Zoller and Schulz [1] provide a simulation that implements the CDD theory. The s
 The work evaluates different approaches: it compares common surrogate models like RSM and GPs, a tree-based approach using LightGBM and various implementations of Long Short-Term Memory (LSTM) neural networks.
 
 The two major parts of this work were 
-
 (1) Building a dataset. As mentioned, simulations are computationally very costly, hence building a dataset is a huge task on its own. I've structurally generated a dataset using multiple large machines running over months. This has the potential of saving hours of future work, hence this may become part of a future publication and will not be published at this point.
 
 (2) I've built different time-series models aiming to generate a complete stress-strain time series based on a set of static input parameters. 
@@ -22,9 +21,11 @@ We achieve the time-series predictions by using models like LightGBM and LSTMs.
 
 ## Structure
 
-/fccd contains all models and datasets
+**/fccd** contains all models and datasets
 
-/notebooks contains a variety of different notebooks used for testing and exploration. For actual usage documentation see notebooks/demo.ipynb
+**/notebooks** contains a variety of different notebooks used for testing and exploration. For actual usage documentation see notebooks/demo.ipynb
+
+**/scripts** contains a set of different scripts for generating the the simulation 
 
 
 
