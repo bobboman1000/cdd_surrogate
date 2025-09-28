@@ -1,38 +1,82 @@
-# Surrogate Models to predict crystal plasticity
+# Surrogate Models for Crystal Plasticity  
 
-## Introduction 
+## Introduction  
+This repository contains the code accompanying my master's thesis:  
+**_Surrogate Models for Crystal Plasticity – Predicting Stress, Strain, and Dislocation Density over Time._**
 
-This is the code to my master's thesis 'Surrogate Models for Crystal Plasticity - Predicting Stress, Strain and Dislocation Density over Time'.
+Crystal plasticity describes how crystalline materials such as metals or ceramics deform under applied loads. A key feature of this behavior is the **stress–strain curve**, which relates applied loading (≈ external force) to actual deformation (≈ change in shape, such as elongation when pulling on an object).  
 
-Roughly speaking, the continuum dislocation dynamics (CDD) theory describes the deformation behavior of crystalline materials like metal or ceramics under loading. A characteristic property of the deformation behavior is the stress-strain curve: It describes the relation of loading (≈ an applied force) to the actucal deformation (≈ ratio of e.g. elongation when pulling on an object).
+The **Continuum Dislocation Dynamics (CDD)** framework, developed by Zoller and Schulz [1], provides a physical simulation to predict these deformation characteristics. While accurate, such simulations are **computationally expensive**.  
 
-Zoller and Schulz [1] provide a simulation that implements the CDD theory. The simulation is able to predict the deformation characteristics such as the stress-strain curve (and more). However, the major downside of such simulations are their high computational costs. Instead, in this work I've built a surrogate model that makes approximate predictions at a much lower computational cost.
+The goal of this work is to develop **surrogate models** that approximate these predictions at a fraction of the computational cost.  
 
-The work evaluates different approaches: it compares common surrogate models like RSM and GPs, a tree-based approach using LightGBM and various implementations of Long Short-Term Memory (LSTM) neural networks.
+Specifically, this repository contains experiments with:  
+- Classical surrogate models (Response Surface Methodology, Gaussian Processes)  
+- Tree-based approaches (LightGBM)  
+- Recurrent neural networks (various LSTM architectures)  
 
-The two major parts of this work were 
-(1) Building a dataset. As mentioned, simulations are computationally very costly, hence building a dataset is a huge task on its own. I've structurally generated a dataset using multiple large machines running over months. This has the potential of saving hours of future work, hence this may become part of a future publication and will not be published at this point.
+## Motivation  
+Running CDD simulations requires significant computational resources. Building the dataset alone took **months of simulations on multiple high-performance machines**. With surrogate models, we can:  
+- Predict stress–strain time series from static material parameters  
+- Reduce simulation time from hours to milliseconds  
+- Enable faster exploration of material behavior  
 
-(2) I've built different time-series models aiming to generate a complete stress-strain time series based on a set of static input parameters. 
+This project therefore contributes towards **efficient material modeling** and has potential to save vast amounts of computational effort in future studies.  
 
-## TL;DR
-The CDD simulation is a physical simulation that, among other things, predicts a time-series of deformation of materials like metal. I've built a surrogate model that predicts this time series, based on physical parameters of the material.
-We achieve the time-series predictions by using models like LightGBM and LSTMs.
+## TL;DR  
+- CDD simulations predict deformation behavior of crystalline materials.  
+- They are accurate, but very costly to run.  
+- This work develops **surrogate models** (LightGBM, LSTMs, etc.) to predict stress–strain curves as time series.  
+- The surrogate models provide **fast and approximate predictions** based on material parameters.  
 
-## Structure
+## Repository Structure  
+```plaintext
+/fccd       # Models and datasets
+/notebooks  # Exploration and testing notebooks
+            # → See notebooks/demo.ipynb for a usage example
+/scripts    # Scripts for generating CDD simulations
+```  
 
-**/fccd** contains all models and datasets
+## Getting Started  
 
-**/notebooks** contains a variety of different notebooks used for testing and exploration. For actual usage documentation see notebooks/demo.ipynb
+### Requirements  
+- Python ≥ 3.8  
+- Recommended: [conda](https://docs.conda.io/en/latest/) or [venv](https://docs.python.org/3/library/venv.html) for environment management  
 
-**/scripts** contains a set of different scripts for generating the the simulation 
+### Installation  
+Clone this repository:  
+```bash
+git clone https://github.com/your-username/surrogate-crystal-plasticity.git
+cd surrogate-crystal-plasticity
+```
 
+Create and activate a virtual environment (conda example):  
+```bash
+conda create -n surrogate-cp python=3.9
+conda activate surrogate-cp
+```
 
+Install dependencies:  
+```bash
+pip install -r requirements.txt
+```
 
+### Usage  
+Run the demo notebook to see surrogate models in action:  
+```bash
+jupyter notebook notebooks/demo.ipynb
+```
 
+Or run training scripts directly (example with LightGBM):  
+```bash
+python fccd/train_lightgbm.py --config configs/lightgbm.yaml
+```
 
+### Datasets  
+⚠️ **Note**: Due to computational cost, the full dataset generated for this thesis is **not publicly released at this point**. Small sample datasets are included for demonstration.  
 
-
-
-[1] Kolja Zoller and Katrin Schulz. “Analysis of single crystalline microwires under torsion using a dislocation-based continuum formulation”. In: Acta Materialia 191 (June 2020), pp. 198–210. ISSN: 13596454. doi: 10.1016/j.actamat.2020.03.057. URL: https://linkinghub.elsevier.com/retrieve/pii/S1359645420302548 (visited on 12/10/2022).
-
+## Reference  
+[1] Kolja Zoller and Katrin Schulz.  
+“Analysis of single crystalline microwires under torsion using a dislocation-based continuum formulation”.  
+*Acta Materialia*, 191 (2020), pp. 198–210.  
+doi: [10.1016/j.actamat.2020.03.057](https://doi.org/10.1016/j.actamat.2020.03.057)  
