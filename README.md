@@ -73,7 +73,7 @@ python fccd/train_lightgbm.py --config configs/lightgbm.yaml
 ```
 
 ### Datasets  
-⚠️ **Note**: Due to computational cost, the full dataset generated for this thesis is **not publicly released at this point**. Small sample datasets are included for demonstration.  
+⚠️ **Note**: The full dataset generated for this thesis is **not publicly released** since it is part of ongoing research. Small sample datasets are included for demonstration.  
 
 ## Reference  
 [1] Kolja Zoller and Katrin Schulz.  
